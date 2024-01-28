@@ -50,7 +50,7 @@ const Login = () => {
             placeholder="Password"
             className="px-4 py-4  w-full mb-4 bg-gray-600 rounded-md text-white"
           />
-          <p className="text-red-700 text-lg pb-3 font-black">{errorMessage!='Valid'?errorMessage:''}</p>
+          <p className="text-red-700 text-lg pb-3 font-black">{errorMessage!=null?errorMessage:''}</p>
           <button className="bg-[rgb(193,17,25)] px-4 py-4 w-full mb-4 text-white rounded-lg" onClick={handleLogInSignUp}>
           {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
