@@ -7,7 +7,7 @@ const ValidateEmailPass = (email, password) => {
     } else if (!passRegex.test(password)) {
       return "Password is not Valid";
     } else {
-      return "Valid";
+      return null;
     }
 };
 export default ValidateEmailPass;
