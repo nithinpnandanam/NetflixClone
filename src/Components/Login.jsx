@@ -46,7 +46,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
-          console.log("Create api is called")
           const user = userCredential.user
           updateProfile(user, {
             displayName: fullName.current.value,
@@ -54,7 +53,6 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
-              console.log("Update api is called")
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -84,7 +82,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user
-          console.log("Sign in api called")
         })
         .catch((error) => {
           const errorCode = error.code;

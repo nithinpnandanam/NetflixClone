@@ -21,15 +21,10 @@ const Header = () => {
         // An error happened.
       });
   };
-  // header is present in all pages
-  // When the header loads onAuthStateChanged will be called in the initial render 
-  // Since user is not logged in that case "Log Out in onAuthStateChanged" will br printed 
-  // When we log in using the firebase api the authentication state changes
-  // onAuthStateChanged(auth, (user) => { ... });: This function sets up a listener for authentication state changes.
-  // So when the state changes the call back function is triggered
+
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
       console.log("user",user)
       if (user) {
         console.log("Log in onAuthStateChanged")
@@ -52,6 +47,8 @@ const Header = () => {
         navigate("/ ")
       }
     });
+    return ()=>unSubscribe();
+    // In the above line we are unsubscribing since onAuthStateChanged is an event listener
   }, []);
 
   return (
