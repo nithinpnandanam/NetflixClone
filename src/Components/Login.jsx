@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
@@ -17,7 +17,7 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const backgroundStyle = {
@@ -46,6 +46,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
+          console.log("Create api is called")
           const user = userCredential.user
           updateProfile(user, {
             displayName: fullName.current.value,
@@ -53,6 +54,7 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
+              console.log("Update api is called")
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -62,7 +64,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               )
-              navigate("/browse");
+              
             })
             .catch((error) => {
               // An error occurred
@@ -82,8 +84,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user
-          navigate("/browse");
-
+          console.log("Sign in api called")
         })
         .catch((error) => {
           const errorCode = error.code;
