@@ -25,9 +25,7 @@ const Header = () => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("user",user)
       if (user) {
-        console.log("Log in onAuthStateChanged")
         // User is signed in, see docs for a list of available properties
         const { uid, email, displayName,photoURL} = user;
         dispatch(
@@ -42,7 +40,6 @@ const Header = () => {
         // ...
       } else {
         // User is signed out
-        console.log("Log Out in onAuthStateChanged")
         dispatch(removeUser());
         navigate("/ ")
       }
