@@ -1,12 +1,12 @@
 // Custom hook for getting NowPLaying movies from TMDB API
 import { useEffect } from "react";
-import {nowplayingURL,APIOptions} from "../Utils/constants.jsx"
+import {upcomingMoviesURL,APIOptions} from "../Utils/constants.jsx"
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies} from "../Utils/moviesSlice.jsx"
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
     const getNowPlayingMovies = async () => {
-        const data = await fetch(nowplayingURL, APIOptions);
+        const data = await fetch(upcomingMoviesURL, APIOptions);
         const json = await data.json();
         dispatch(addNowPlayingMovies(json.results))
 

@@ -49,7 +49,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="z-10 w-full absolute px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
+    <div className="z-10 w-full  absolute px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
       <img
         className="w-44"
         src={NETFLIX_LOGO}
@@ -58,9 +58,9 @@ const Header = () => {
       {/* When we login or sign up user's data get stored in the store  */}
       {user && (
         <div className="flex items-center">
-          <div className="w-12 mr-2">
+          <div className="w-10 mr-2">
             <img
-            className="rounded-full"
+            className="rounded h-[38px]"
             src={user?.photoURL}
             alt="user_profile_pic"
           />
