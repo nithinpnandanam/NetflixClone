@@ -6,13 +6,16 @@ import {onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import {addUser,removeUser} from "../Utils/userSlice"
 import { useEffect } from "react";
-import { NETFLIX_LOGO } from "../Utils/constants";
+import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../Utils/constants";
 import { toggleGptsearch } from "../Utils/gptSlice";
+import { assignLanguage } from "../Utils/languageSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const gpt = useSelector((store) => store.gpt)
+
+  
   const logOut = () => {
     signOut(auth)
       .then(() => {
@@ -25,6 +28,9 @@ const Header = () => {
   };
   const goToGptSearch = () => {
     dispatch(toggleGptsearch())
+  }
+  const selectLanguage = (e) =>{
+    dispatch(assignLanguage(e.target.value))
   }
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -61,6 +67,12 @@ const Header = () => {
       {/* When we login or sign up user's data get stored in the store  */}
       {user && (
         <div className="flex items-center">
+          {gpt.showGptsearch && <select className="mr-4 px-2 py-2 rounded-lg bg-black text-white opacity-70 border-white border-solid border " onChange={selectLanguage}>
+          {
+            SUPPORTED_LANGUAGES.map(element=><option value={element?.identifier} key={element?.identifier} >{element?.name}</option>)
+          }
+          </select>
+          }
           <button className=" bg-purple-700 text-white px-4 py-2 h-1/4 rounded-lg mr-4" onClick={goToGptSearch}>
             {gpt.showGptsearch?"Show Movie List":"GPT Search"}
           </button>

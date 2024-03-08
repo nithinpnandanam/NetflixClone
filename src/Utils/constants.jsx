@@ -14,3 +14,9 @@ export const APIOptions = {
   export const upcomingMoviesURL = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
   export const videoInfoURL = 'https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US';
   export const posterCDN = 'https://image.tmdb.org/t/p/w500/'
+
+  export const  SUPPORTED_LANGUAGES = [
+    {identifier:"english",name:"English"},
+    {identifier:"hindi",name:"Hindi"},
+    {identifier:"malayalam",name:"Malayalam"},
+  ]
