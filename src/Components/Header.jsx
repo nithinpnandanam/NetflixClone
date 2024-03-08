@@ -7,10 +7,12 @@ import { useDispatch } from "react-redux";
 import {addUser,removeUser} from "../Utils/userSlice"
 import { useEffect } from "react";
 import { NETFLIX_LOGO } from "../Utils/constants";
+import { toggleGptsearch } from "../Utils/gptSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const gpt = useSelector((store) => store.gpt)
   const logOut = () => {
     signOut(auth)
       .then(() => {
@@ -21,8 +23,9 @@ const Header = () => {
         // An error happened.
       });
   };
-
-
+  const goToGptSearch = () => {
+    dispatch(toggleGptsearch())
+  }
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -58,6 +61,9 @@ const Header = () => {
       {/* When we login or sign up user's data get stored in the store  */}
       {user && (
         <div className="flex items-center">
+          <button className=" bg-purple-700 text-white px-4 py-2 h-1/4 rounded-lg mr-4" onClick={goToGptSearch}>
+            {gpt.showGptsearch?"Show Movie List":"GPT Search"}
+          </button>
           <div className="w-10 mr-2">
             <img
             className="rounded h-[38px]"
