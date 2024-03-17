@@ -5,7 +5,7 @@ export const APIOptions = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MjgwMGNkNTNlNTMyNTE4OTM2ZTAzMGM2NjE0ZTlkZCIsInN1YiI6IjY1ZGUxMmIwMjRiMzMzMDE0OWI2YTIyYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.d6JF0XcqOnlc6u47zA_vTY7jms4upbeeISYuCOcb1YU'
+      Authorization: 'Bearer '+ import.meta.env.VITE_TMDB_Key
     }
   };
   export const nowplayingMoviesURL = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
@@ -14,3 +14,11 @@ export const APIOptions = {
   export const upcomingMoviesURL = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
   export const videoInfoURL = 'https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US';
   export const posterCDN = 'https://image.tmdb.org/t/p/w500/'
+
+  export const  SUPPORTED_LANGUAGES = [
+    {identifier:"english",name:"English"},
+    {identifier:"hindi",name:"Hindi"},
+    {identifier:"malayalam",name:"Malayalam"},
+  ]
+
+  export const open_AI_key = import.meta.env.VITE_open_AI_key

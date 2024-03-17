@@ -42,7 +42,7 @@ const MovieList = ({ title, movies, uniq_id }) => {
         <div>
             <h1 className="text-white text-3xl p-2 ">{title}</h1>
             <div className="flex items-center relative" onMouseEnter={() => setShowChevrons(true)} onMouseLeave={() => setShowChevrons(false)}>
-                <MdChevronLeft size={40} onClick={slideLeft} color="white" className={`h-60 w-20 ${showChevrons ? 'block' : 'hidden'} bg-black opacity-50 z-20 absolute left-0`} />
+                {movies.length>11 && <MdChevronLeft size={40} onClick={slideLeft} color="white" className={`h-60 w-20 ${showChevrons ? 'block' : 'hidden'} bg-black opacity-50 z-20 absolute left-0`} />}
                 <div className="flex overflow-x-auto scrollbar-hide z-10 " id={"row-movies-" + uniq_id}  >
                     <div className="flex">
                         {
@@ -50,7 +50,7 @@ const MovieList = ({ title, movies, uniq_id }) => {
                         }
                     </div>
                 </div>
-                <MdChevronRight size={40} onClick={slideRight} color="white" className={`h-60 w-20 ${showChevrons ? 'block' : 'hidden'} bg-black opacity-50 z-20 absolute right-0`} />
+                {movies.length>11 && <MdChevronRight size={40} onClick={slideRight} color="white" className={`h-60 w-20 ${showChevrons ? 'block' : 'hidden'} bg-black opacity-50 z-20 absolute right-0`} />}
             </div>
 
         </div>
