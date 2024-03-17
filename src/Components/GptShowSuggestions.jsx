@@ -1,7 +1,18 @@
+import { useSelector } from "react-redux"
+import MovieList from "./MovieList"
+
 const GptShowSuggestions = () => {
-    return (
-        <div className="border-2 border-white-900 border-solid">
-            <h2 className="text-white ">These are the suggestions</h2>
+    const { gptMoviesModifiedStore, tmdbFinalResultStore } = useSelector(store => store?.gpt)
+    const gpt = useSelector((store) => store.gpt)
+    return gptMoviesModifiedStore &&  (
+        <div className="bg-black opacity-80">
+            {gptMoviesModifiedStore?.map((movieName, index) => (
+                <MovieList
+                    key={movieName}
+                    title={movieName}
+                    movies={tmdbFinalResultStore[index]}
+                />
+            ))}
         </div>
     )
 }
