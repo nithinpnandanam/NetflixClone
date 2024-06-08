@@ -10,7 +10,7 @@ export const APIOptions = {
   };
   export const nowplayingMoviesURL = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
   export const popularMoviesURL = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
-  export const topRatedMoviesURL = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
+  export const topRatedMoviesURL =  'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
   export const upcomingMoviesURL = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
   export const videoInfoURL = 'https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US';
   export const posterCDN = 'https://image.tmdb.org/t/p/w500/'
