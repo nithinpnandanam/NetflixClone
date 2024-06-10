@@ -1,2 +1,6 @@
 # NetflixClone
-A Clone of Netflix App 
+- A Clone of Netflix App 
+
+
+
+
