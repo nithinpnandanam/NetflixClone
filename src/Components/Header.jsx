@@ -50,11 +50,11 @@ const Header = () => {
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate("/ ")
+        navigate("/")
       }
     });
     return ()=>unSubscribe();
-    // In the above line we are unsubscribing since onAuthStateChanged is an event listener
+    // In the above line we are unsubscribing since onAuthStateChanged is an event listener(an observer)
   }, []);
 
   return (
@@ -74,7 +74,7 @@ const Header = () => {
           </select>
           }
           <button className=" bg-purple-700 text-white px-4 py-2 h-1/4 rounded-lg mr-4" onClick={goToGptSearch}>
-            {gpt.showGptsearch?"Show Movie List":"GPT Search"}
+            {gpt.showGptsearch?"Show Movie List":"Movie Search"}
           </button>
           <div className="w-10 mr-2">
             <img

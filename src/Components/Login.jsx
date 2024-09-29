@@ -48,6 +48,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user
+          // user === auth.currentUseris =>>> true
           updateProfile(user, {
             displayName: fullName.current.value,
             photoURL: AVATAR,
