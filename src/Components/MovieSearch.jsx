@@ -10,6 +10,7 @@ const MovieSearch = () => {
   const dispatch = useDispatch();
   const selectedLang = useSelector((store) => store.lang.selectedLang);
   const gpt = useSelector((store) => store.gpt);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const getSingleMovieDetail = async (movieName) => {
     const data = await fetch(
       `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`,
@@ -79,7 +80,6 @@ const MovieSearch = () => {
 
   const getQuestionFromUser = (element) => {
     searchText.current.value = element;
-    console.log(element)
     handleGptSearchFake(questionSuggestion[element])
   };
   return (
@@ -99,15 +99,19 @@ const MovieSearch = () => {
             placeholder={languageWords[selectedLang].searchPlaceHolder}
             type="text"
             ref={searchText}
+            onClick={() => setShowSuggestions(true)}
           />
 
           <div className="w-full bg-slate-400 rounded-lg">
-            {Object.keys(questionSuggestion).map((element, index) => {
+            {showSuggestions && Object.keys(questionSuggestion).map((element, index) => {
               return (
                 <p
                   className="p-[10px]"
                   key={index}
-                  onClick={() => getQuestionFromUser(element)}
+                  onClick={() => {
+                    getQuestionFromUser(element)
+                    setShowSuggestions(false)
+                  }}
                 >
                   {element}
                 </p>
